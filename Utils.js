@@ -14,7 +14,7 @@ function NewPriceInput(props) {
       <label>
         Price of new row:
         <br />
-        <input type="number" name="newPrice" />
+        <input required type="number" name="newPrice" />
       </label>
       <input type="submit" value="Add Row" />
     </form>

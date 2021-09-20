@@ -1,17 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ItemAdder from './ItemAdder';
 
 function Container(props) {
-  // currentList = props.veggies if they are not undefined
-  const [currentList, setCurrentList] = useState(props.veggies ?? []);
+  const [currentList, setCurrentList] = useState([]);
 
+  // updating list as well as calling hook of parent with useEffect
   const handleItemAdd = newItem => {
     setCurrentList([...currentList, newItem]);
   };
+  useEffect(() => {
+    if(props.postAdder !== undefined) {
+      props.postAdder(currentList.length);
+    }
+  }, [currentList]);
 
   return (
     <div>
-      <CurrentVeggieList listItems={currentList}/>
+      <CurrentVeggieList keyPref={props.rowId} listItems={currentList}/>
       <ItemAdder postSubmit={handleItemAdd}/>
     </div>
   );
@@ -20,16 +25,15 @@ function Container(props) {
 function CurrentVeggieList(props) {
   const listItems = props.listItems;
 
-  const listView = listItems.map(name => {
-    return <li>{name}</li>;
-  });
-
   return (
     <ul>
-      {listView}
+      {
+        listItems.length > 0
+          ? listItems.map(name => <li key={props.keyPref + name}>{name}</li>)
+          : "No items yet"
+      }
     </ul>
   );
 }
-
 
 export default Container;

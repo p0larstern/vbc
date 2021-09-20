@@ -20,7 +20,6 @@ function ItemAdder(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(newItem);
     props.postSubmit(newItem);
   };
 
@@ -28,6 +27,7 @@ function ItemAdder(props) {
     <div>
       <form onSubmit={handleSubmit}>
       <input
+      required
       type="text"
       list="veggieListData"
       name="itemToAdd"

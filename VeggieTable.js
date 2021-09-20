@@ -48,9 +48,14 @@ function VeggieTable() {
           {tblBody}
         </tbody>
         <tfoot>
-          {"Final Amount="+amount}
+          <tr>
+            <td colSpan="3">
+              {"Final Amount="+amount}
+            </td>
+          </tr>
         </tfoot>
       </table>
+      <br />
       <UtilsPanel submitHandler={handlePriceRowAddition}/>
     </div>
   );

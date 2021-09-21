@@ -12,9 +12,14 @@ function NewPriceInput(props) {
   return (
     <form onSubmit={submitHandler}>
       <label>
-        Price of new row:
+        Price of new group:
         <br />
-        <input required type="number" name="newPrice" />
+        <input
+        required
+        type="number"
+        name="newPrice"
+        placeholder="10,20 etc."
+        min="1"/>
       </label>
       <input type="submit" value="Add Row" />
     </form>

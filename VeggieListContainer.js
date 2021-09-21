@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ItemAdder from './ItemAdder';
+import {BASIC_LIST} from './VEGGIE_LIST';
 
 function Container(props) {
   const [currentList, setCurrentList] = useState([]);
@@ -15,9 +16,9 @@ function Container(props) {
   }, [currentList]);
 
   return (
-    <div>
+    <div className="listContainer">
       <CurrentVeggieList keyPref={props.rowId} listItems={currentList}/>
-      <ItemAdder postSubmit={handleItemAdd}/>
+      <ItemAdder postSubmit={handleItemAdd} suggestions={BASIC_LIST}/>
     </div>
   );
 }

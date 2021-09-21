@@ -1,16 +1,5 @@
 import React, {useState} from 'react';
 
-const VEGGIE_LIST = [
-  'onion',
-  'potato',
-  'carrot',
-  'brinjal',
-  'tomato',
-  'lauki',
-  'torai',
-  'arbi'
-];
-
 function ItemAdder(props) {
   const [newItem, setNewItem] = useState(null);
   
@@ -31,10 +20,11 @@ function ItemAdder(props) {
       type="text"
       list="veggieListData"
       name="itemToAdd"
+      placeholder="Item with same price?"
       onChange={handleChange} />
       <datalist id="veggieListData">
         {
-          VEGGIE_LIST.map((item, idx) => (
+          props.suggestions.map((item, idx) => (
             <option key={idx} value={item} />
           ))
         }

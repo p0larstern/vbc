@@ -2,7 +2,7 @@
 
 ![Imagine a Vegetable Market](./banner_from_unsplash.jpg "Siti Khatijah Market, Kelantan, Malaysia.")
 
-Very simple tool which can be used for quick reference of items,  their prices and final amount whenever you are buying many vegetables at once.
+Very simple tool which can be used for quick reference of items you purchase, their prices and final amount whenever you are buying many vegetables at once.
 
 ### How to install
 1. Install npm

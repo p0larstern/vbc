@@ -17,3 +17,6 @@ Do `npm start` to run the start script which uses [parcel](https://parceljs.org/
 ### Github-pages hosting
 - Currently the site is static so it is very easy to host the project on gh-pages
 - Run `npm run build`, this creates a `docs` folder in the root directory which can be selected as the source directory for gh-pages deployment.
+
+
+Banner image taken from [here](https://unsplash.com/@aliffhassan91)

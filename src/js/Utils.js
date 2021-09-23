@@ -5,7 +5,7 @@ function NewPriceInput(props) {
     event.preventDefault();
 
     // Price from event response
-    let newPrice = event.target.newPrice.value;
+    let newPrice = Number(event.target.newPrice.value);
     props.submitHandler(newPrice);
   };
 

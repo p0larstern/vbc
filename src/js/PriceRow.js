@@ -5,7 +5,7 @@ function PriceRow(props) {
   // [total.old, total.new]
   const [total, setTotal] = useState([0,0]);
   const price = props.price ?? 10;
-  const rowIndex = props.index ?? 0;
+  const id = props.id ?? 0;
 
   const handleListUpdate = newCount => {
     setTotal([total[1], price * newCount]);
@@ -17,9 +17,9 @@ function PriceRow(props) {
   }, [total[1]]);
 
   return (
-    <tr key={rowIndex}>
+    <tr key={id}>
       <td>{price}</td>
-      <td><Container rowId={rowIndex} postAdder={handleListUpdate}/></td>
+      <td><Container rowId={id} postAdder={handleListUpdate}/></td>
       <td>{total[1]}</td>
     </tr>
   );

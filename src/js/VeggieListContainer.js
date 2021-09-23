@@ -3,10 +3,16 @@ import ItemAdder from './ItemAdder';
 import {BASIC_LIST} from './VEGGIE_LIST';
 
 function Container(props) {
+  const [nextId, setNextId] = useState(0);
   const [currentList, setCurrentList] = useState([]);
 
   // updating list as well as calling hook of parent with useEffect
-  const handleItemAdd = newItem => {
+  const handleItemAdd = newItemName => {
+    const newItem = {
+      name: newItemName,
+      id: nextId,
+    };
+    setNextId(nextId + 1);
     setCurrentList([...currentList, newItem]);
   };
   useEffect(() => {
@@ -24,13 +30,15 @@ function Container(props) {
 }
 
 function CurrentVeggieList(props) {
-  const listItems = props.listItems;
+  const { listItems, keyPref } = props;
 
   return (
     <ul>
       {
         listItems.length > 0
-          ? listItems.map(name => <li key={props.keyPref + name}>{name}</li>)
+          ? listItems.map(i => (
+            <li key={keyPref + `i${i.id}`}>{i.name}</li>
+          ))
           : "No items yet"
       }
     </ul>

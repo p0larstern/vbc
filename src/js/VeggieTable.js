@@ -14,8 +14,11 @@ function TableHeader() {
 }
 
 function VeggieTable() {
-  const [nextId, setNextId] = useState(0);
-  const [priceRows, setPriceRows] = useState([]);
+  const [nextId, setNextId] = useState(1);
+  const [priceRows, setPriceRows] = useState([{
+    price: 15,
+    rowId: 'r0',
+  }]);
   const [amount, setAmount] = useState(0);
 
   // Adding a price row by useState setter

@@ -19,7 +19,7 @@ function PriceRow(props) {
   return (
     <tr key={id}>
       <td>{price}</td>
-      <td><Container rowId={id} postAdder={handleListUpdate}/></td>
+      <td><Container rowId={id} postUpdate={handleListUpdate}/></td>
       <td>{total[1]}</td>
     </tr>
   );

@@ -10,34 +10,44 @@ function Container(props) {
   const handleItemAdd = newItemName => {
     const newItem = {
       name: newItemName,
-      id: nextId,
+      id: `${props.rowId}-i${nextId}`,
     };
     setNextId(nextId + 1);
     setCurrentList([...currentList, newItem]);
   };
+
+  const handleItemDelete = itemId => {
+    setCurrentList(currentList.filter(item => item.id !== itemId));
+  };
+
   useEffect(() => {
-    if(props.postAdder !== undefined) {
-      props.postAdder(currentList.length);
+    if(props.postUpdate !== undefined) {
+      props.postUpdate(currentList.length);
     }
   }, [currentList]);
 
   return (
     <div className="listContainer">
-      <CurrentVeggieList keyPref={props.rowId} listItems={currentList}/>
+      <CurrentVeggieList listItems={currentList} postDelete={handleItemDelete}/>
       <ItemAdder postSubmit={handleItemAdd} suggestions={BASIC_LIST}/>
     </div>
   );
 }
 
 function CurrentVeggieList(props) {
-  const { listItems, keyPref } = props;
+  const { listItems, postDelete } = props;
 
   return (
     <ul>
       {
         listItems.length > 0
           ? listItems.map(i => (
-            <li key={keyPref + `i${i.id}`}>{i.name}</li>
+            <li key={`${i.id}`}>
+              {i.name}
+              <button onClick={() => postDelete(i.id)}>
+                <b>X</b>
+              </button>
+            </li>
           ))
           : "No items yet"
       }

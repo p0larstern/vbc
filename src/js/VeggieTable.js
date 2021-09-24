@@ -14,24 +14,32 @@ function TableHeader() {
 }
 
 function VeggieTable() {
-  const [nextId, setNextId] = useState(1);
-  const [priceRows, setPriceRows] = useState([{
-    price: 15,
-    rowId: 'r0',
-  }]);
+  const init_state = {
+    nextId: 1,
+    priceRows: [{
+      price: 15,
+      rowId: 'r0',
+    }],
+  }
+
+  const [state, setState] = useState(init_state);
   const [amount, setAmount] = useState(0);
 
   // Adding a price row by useState setter
   const handlePriceRowAddition = (newPrice) => {
     // Avoid adding another row with duplicate price
-    if(!(priceRows.map(i => i.price).includes(newPrice))) {
+    if(!(state.priceRows.map(i => i.price).includes(newPrice))) {
       const newPriceRow = {
         price: newPrice,
         rowId: `r${nextId}`,
       };
 
-      setPriceRows([...priceRows, newPriceRow]);
-      setNextId(nextId+1);
+      setState({
+        priceRows: [...state.priceRows, newPriceRow]
+      });
+      setState({
+        nextId: state.nextId + 1
+      });
     }
   };
 
@@ -40,7 +48,7 @@ function VeggieTable() {
     setAmount(amount - oldTotal + newTotal);
   };
 
-  const tblBody = priceRows.map((item) => (
+  const tblBody = state.priceRows.map((item) => (
     <PriceRow
     price={item.price}
     id={item.rowId}

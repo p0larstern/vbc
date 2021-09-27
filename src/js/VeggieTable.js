@@ -27,18 +27,30 @@ function VeggieTable() {
 
   // Adding a price row by useState setter
   const handlePriceRowAddition = (newPrice) => {
-    // Avoid adding another row with duplicate price
-    if(!(state.priceRows.map(i => i.price).includes(newPrice))) {
+
+    let idx; // leftmost element of priceRows with price >= newPrice
+    let toAdd = true; // flag
+    for (idx = 0; idx < state.priceRows.length; idx++) {
+      if (state.priceRows[idx].price >= newPrice) {
+        // we should add newPrice here or ignore if duplicate exists
+        if(state.priceRows[idx].price == newPrice) {
+          toAdd = false;
+        }
+        break;
+      }
+    }
+    if (toAdd) {
       const newPriceRow = {
         price: newPrice,
-        rowId: `r${nextId}`,
+        rowId: `r${state.nextId}`,
       };
 
+      const newPriceRows = state.priceRows.slice();
+      newPriceRows.splice(idx, 0, newPriceRow);
+
       setState({
-        priceRows: [...state.priceRows, newPriceRow]
-      });
-      setState({
-        nextId: state.nextId + 1
+        priceRows: newPriceRows,
+        nextId: state.nextId + 1,
       });
     }
   };

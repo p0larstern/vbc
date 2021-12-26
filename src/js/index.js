@@ -1,7 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import VeggieTableContainer from "./VeggieTable"
 
-import VeggieTable from "./VeggieTable";
-
-ReactDOM.render(<VeggieTable />, document.getElementById("root"))
-
+ReactDOM.render(<VeggieTableContainer />, document.getElementById("root"))

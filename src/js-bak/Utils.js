@@ -1,25 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function NewPriceInput(props) {
-  const [price, setPrice] = useState(0);
-
   const submitHandler = event => {
     event.preventDefault();
 
     // Price from event response
-    // console.log(event);
-    props.submitHandler(price);
+    let newPrice = Number(event.target.newPrice.value);
+    props.submitHandler(newPrice);
   };
 
-  const handleChange = e => {
-    // console.log(e.target.value);
-    setPrice(Number(e.target.value));
-  }
-
   return (
-    <form
-    onChange={handleChange}
-    onSubmit={submitHandler}>
+    <form onSubmit={submitHandler}>
       <label>
         Price of new group:
         <br />

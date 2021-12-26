@@ -5,7 +5,6 @@ function ItemAdder(props) {
   
   const handleChange = event => {
     setNewItem(event.target.value);
-    // console.log(newItem);
   };
 
   const handleSubmit = event => {
